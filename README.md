@@ -1,9 +1,8 @@
 # Rona Voice Assistant
 
-``` 
-git clone blablabla
-pipenv install  
-```
+`git clone blablabla`  
+`pipenv install` 
+
 
 #### If you have an issue with installing pyaudio, try installing portaudio first
 
