@@ -10,6 +10,9 @@ API_KEY = 'tkHu_NhfVaDD'
 PROJECT_TOKEN = 'tTMdT3m1oVWn'
 RUN_TOKEN = 'tDc9UPLUVTU2'
 
+for index, name in enumerate(sr.Microphone.list_microphone_names()):
+    print("Microphone with name \"{1}\" found for `Microphone(device_index={0})`".format(index, name))
+
 class Data:
     def __init__(self, api_key, project_token):
         self.api_key = api_key
