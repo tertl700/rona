@@ -10,8 +10,9 @@ API_KEY = 'tkHu_NhfVaDD'
 PROJECT_TOKEN = 'tTMdT3m1oVWn'
 RUN_TOKEN = 'tDc9UPLUVTU2'
 
-for index, name in enumerate(sr.Microphone.list_microphone_names()):
-    print("Microphone with name \"{1}\" found for `Microphone(device_index={0})`".format(index, name))
+# prints out list of microphones on your computer, useful if your microphone is not the default input device
+#for index, name in enumerate(sr.Microphone.list_microphone_names()):
+#    print("Microphone with name \"{1}\" found for `Microphone(device_index={0})`".format(index, name))
 
 class Data:
     def __init__(self, api_key, project_token):
@@ -81,7 +82,6 @@ def speak(text):
 def listen():
     r = sr.Recognizer()
     with sr.Microphone() as source:
-        r.adjust_for_ambient_noise(source)
         print('Listening...')
         audio = r.listen(source)
         speech = ''
@@ -101,11 +101,17 @@ def main():
     country_list = list(data.get_countries())
 
     TOTAL_PATTERNS= {
+        #re.compile('[\w\s]+ cases'):data.get_total_cases,
+        #re.compile('total [\w\s]+ cases'):data.get_total_cases,
         re.compile('[\w\s]+ total [\w\s]+ cases'):data.get_total_cases,
         re.compile('[\w\s]+ total cases'):data.get_total_cases,
+        #re.compile('total [\w\s]+ deaths'):data.get_total_deaths,
+        #re.compile('[\w\s]+ deaths'):data.get_total_deaths,
         re.compile('[\w\s]+ total [\w\s]+ deaths'):data.get_total_deaths,
         re.compile('[\w\s]+ total deaths'):data.get_total_deaths,
         re.compile('[\w\s]+ worldwide deaths'):data.get_total_deaths,
+        #re.compile('[\w\s]+ recovered'):data.get_total_recovered,
+        #re.compile('total [\w\s]+ recovered'):data.get_total_recovered,
         re.compile('[\w\s]+ total [\w\s] + recovered'):data.get_total_recovered,
         re.compile('[\w\s]+ total recovered'):data.get_total_recovered
     }
